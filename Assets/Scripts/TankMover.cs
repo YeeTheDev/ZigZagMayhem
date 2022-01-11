@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class TankMover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float moveSpeed = 3;
+    [SerializeField] Transform tankHead = null;
 
-    // Update is called once per frame
-    void Update()
+    Rigidbody rb;
+
+    private void Awake() { rb = GetComponent<Rigidbody>(); }
+
+    public void MoveForward() { rb.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime); }
+    public void ChangeMoveDirection() { transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles* -1); }
+
+    public void RotateTankHead(Vector3 mouseCursorPoint)
     {
-        
+        mouseCursorPoint.y = tankHead.position.y;
+        tankHead.LookAt(mouseCursorPoint, Vector3.up);
     }
 }
