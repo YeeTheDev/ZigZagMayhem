@@ -9,6 +9,8 @@ public class TankController : MonoBehaviour
     [Range(-10,10)][SerializeField] float mousePrecision = 4;
     [SerializeField] float moveSpeed = 2;
     [SerializeField] GameObject bulletPrefab = null;
+    [SerializeField] Transform muzzle = null;
+    [SerializeField] float bulletSpeed = 3;
 
     Rigidbody rb;
 
@@ -31,7 +33,8 @@ public class TankController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("PewPewPew!");
+            GameObject bullet = Instantiate(bulletPrefab, muzzle.position, tankHead.localRotation);
+            bullet.GetComponent<Rigidbody>().velocity = tankHead.forward * bulletSpeed;
         }
     }
 
