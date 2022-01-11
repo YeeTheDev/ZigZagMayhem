@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TankMover))]
+[RequireComponent(typeof(Shooter))]
 public class TankController : MonoBehaviour
 {
     [Range(-10,10)][SerializeField] float mousePrecision = 4;
-    [SerializeField] GameObject bulletPrefab = null;
-    [SerializeField] Transform muzzle = null;
-    [SerializeField] float bulletSpeed = 3;
 
     TankMover tankMover;
+    Shooter shooter;
 
     private void Awake()
     {
         tankMover = GetComponent<TankMover>();
+        shooter = GetComponent<Shooter>();
     }
 
     public void Update()
@@ -22,15 +22,7 @@ public class TankController : MonoBehaviour
         tankMover.MoveForward();
         ReadChangeDirectionInput();
         tankMover.RotateTankHead(CalculateMouseCursorPoint());
-
-        //if (Input.GetKeyDown(KeyCode.Mouse0))
-        //{
-        //    Vector3 bulletRotation = bulletPrefab.transform.eulerAngles;
-        //    bulletRotation.y = tankHead.eulerAngles.y;
-
-        //    GameObject bullet = Instantiate(bulletPrefab, muzzle.position, Quaternion.Euler(bulletRotation));
-        //    bullet.GetComponent<Rigidbody>().velocity = tankHead.forward * bulletSpeed;
-        //}
+        ReadShootInput();
     }
 
     private void ReadChangeDirectionInput()
@@ -48,4 +40,6 @@ public class TankController : MonoBehaviour
 
         return mouseCursorPoint;
     }
+
+    private void ReadShootInput() { if (Input.GetKeyDown(KeyCode.Mouse0)) { shooter.Shoot(); } }
 }
