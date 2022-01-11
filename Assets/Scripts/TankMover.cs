@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TankMover : MonoBehaviour
@@ -11,9 +9,12 @@ public class TankMover : MonoBehaviour
 
     private void Awake() { rb = GetComponent<Rigidbody>(); }
 
+    //Called in TankController
     public void MoveForward() { rb.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime); }
+    //Called in TankController
     public void ChangeMoveDirection() { transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles* -1); }
 
+    //Called in TankController
     public void RotateTankHead(Vector3 mouseCursorPoint)
     {
         mouseCursorPoint.y = tankHead.position.y;

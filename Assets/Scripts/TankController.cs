@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TankMover))]
@@ -25,13 +23,7 @@ public class TankController : MonoBehaviour
         ReadShootInput();
     }
 
-    private void ReadChangeDirectionInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            tankMover.ChangeMoveDirection();
-        }
-    }
+    private void ReadChangeDirectionInput() { if (Input.GetKeyDown(KeyCode.Space)) { tankMover.ChangeMoveDirection(); } }
 
     private Vector3 CalculateMouseCursorPoint()
     {
