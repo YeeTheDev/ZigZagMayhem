@@ -394,8 +394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7657b957903eb48738b960e6a05b1733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectLimit: 5
-  startingObjects: 5
+  objectLimit: 10
+  startingObjects: 10
   createsMoreObjects: 0
   parent: {fileID: 0}
   alreadySpawnedObjects: []
