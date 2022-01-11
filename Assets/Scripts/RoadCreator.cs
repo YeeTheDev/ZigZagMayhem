@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class RoadCreator : MonoBehaviour
 {
-    [SerializeField] float offset = 0.707f;
-    [SerializeField] float spawnTime = 0.5f;
+    [SerializeField] float offset = 3.535534f;
+    [SerializeField] float spawnTime = 1.25f;
     [SerializeField] Transform startingRoad = null;
-    [SerializeField] GameObject roadPrefab = null;
 
     Vector3 lastPos;
+    ObjectPooler pooler;
 
     private void Awake()
     {
         lastPos = startingRoad.position;
+        pooler = GetComponent<ObjectPooler>();
     }
 
     public void Start()
@@ -23,17 +24,20 @@ public class RoadCreator : MonoBehaviour
 
     private void CreateNewRoadPart()
     {
-        Debug.Log("Creating");
+        Transform roadPart = pooler.GetObject().transform;
+        roadPart.position = RandomSpawnPoint();
+        roadPart.gameObject.SetActive(true);
+        lastPos = roadPart.position;
 
-        Vector3 spawnPos = Vector3.zero;
-        float chance = Random.Range(0, 100);
-        if (chance < 50)
-        {
-            spawnPos = new Vector3(lastPos.x + offset, lastPos.y, lastPos.z + offset);
-        }
-        else { spawnPos = new Vector3(lastPos.x - offset, lastPos.y, lastPos.z + offset); }
+        pooler.EnqueueObject(roadPart.gameObject);
+    }
 
-        GameObject newRoadPart = Instantiate(roadPrefab, spawnPos, Quaternion.Euler(0, 45, 0), transform);
-        lastPos = newRoadPart.transform.position;
+    private Vector3 RandomSpawnPoint()
+    {
+        Vector3 spawnPos = lastPos + Vector3.one * offset;
+        spawnPos.x += Random.Range(0, 100) < 50 ? 0 : -offset * 2;
+        spawnPos.y = lastPos.y;
+
+        return spawnPos;
     }
 }
