@@ -33,7 +33,10 @@ public class TankController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameObject bullet = Instantiate(bulletPrefab, muzzle.position, tankHead.localRotation);
+            Vector3 bulletRotation = bulletPrefab.transform.eulerAngles;
+            bulletRotation.y = tankHead.eulerAngles.y;
+
+            GameObject bullet = Instantiate(bulletPrefab, muzzle.position, Quaternion.Euler(bulletRotation));
             bullet.GetComponent<Rigidbody>().velocity = tankHead.forward * bulletSpeed;
         }
     }
