@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    [SerializeField] GameObject objectType;
-    [SerializeField] int startingObjects;
-    [SerializeField] bool createsMoreObjects = true;
-    [SerializeField] Transform parent;
-    [SerializeField] GameObject[] alreadySpawnedObjects;
+    [SerializeField] int objectLimit = 0;
+    [SerializeField] int startingObjects = 0;
+    [SerializeField] bool createsMoreObjects = false;
+    [SerializeField] Transform parent = null;
+    [SerializeField] GameObject[] alreadySpawnedObjects = null;
+    [SerializeField] GameObject objectType = null;
 
     Queue<GameObject> objectQueue = new Queue<GameObject>();
 
     private void Awake()
     {
+        CreateInitialObjects();
         EnqueueInitialObjects();
-        CreateInitialObjects(parent);
     }
 
     private void EnqueueInitialObjects()
@@ -28,15 +29,17 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    private void CreateInitialObjects(Transform parent = null)
+    private void CreateInitialObjects()
     {
         for (int i = 0; i < startingObjects; i++)
         {
+            if (objectQueue.Count >= objectLimit) { break; }
+
             EnqueueObject(CreateNewObject());
         }
     }
 
-    private GameObject CreateNewObject(Transform parent = null)
+    private GameObject CreateNewObject()
     {
         GameObject poolObject = Instantiate(objectType);
 
@@ -46,15 +49,14 @@ public class ObjectPooler : MonoBehaviour
             poolObject.transform.parent = parent;
         }
 
+        poolObject.SetActive(false);
         return poolObject;
     }
 
     public GameObject GetObject()
     {
-        if (createsMoreObjects && objectQueue.Count <= 0)
-        {
-            return CreateNewObject();
-        }
+        if (createsMoreObjects && objectQueue.Count <= 0) { return CreateNewObject(); }
+        else if(objectQueue.Count <= 0) { return null; }
 
         return objectQueue.Dequeue();
     }
@@ -62,6 +64,5 @@ public class ObjectPooler : MonoBehaviour
     public void EnqueueObject(GameObject objectToEnqueue)
     {
         objectQueue.Enqueue(objectToEnqueue);
-        objectToEnqueue.SetActive(false);
     }
 }
