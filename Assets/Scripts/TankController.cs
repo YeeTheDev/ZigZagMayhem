@@ -18,9 +18,15 @@ public class TankController : MonoBehaviour
 
     public void Update()
     {
-        RotateCannonToMouseCursor();
 
         rb.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles * -1);
+        }
+
+        RotateCannonToMouseCursor();
     }
 
     private void RotateCannonToMouseCursor()
