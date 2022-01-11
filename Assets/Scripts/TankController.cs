@@ -8,6 +8,7 @@ public class TankController : MonoBehaviour
     [SerializeField] Transform tankHead = null;
     [Range(-10,10)][SerializeField] float mousePrecision = 4;
     [SerializeField] float moveSpeed = 2;
+    [SerializeField] GameObject bulletPrefab = null;
 
     Rigidbody rb;
 
@@ -27,6 +28,11 @@ public class TankController : MonoBehaviour
         }
 
         RotateCannonToMouseCursor();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Debug.Log("PewPewPew!");
+        }
     }
 
     private void RotateCannonToMouseCursor()
