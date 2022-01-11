@@ -42,6 +42,9 @@ public class ObjectPooler : MonoBehaviour
     private GameObject CreateNewObject()
     {
         GameObject poolObject = Instantiate(objectType);
+        Bullet bullet = poolObject.GetComponent<Bullet>();
+
+        if (bullet != null) { bullet.SetPooler = this; }
 
         if (parent != null)
         {
