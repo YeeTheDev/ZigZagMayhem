@@ -6,10 +6,23 @@ public class Shooter : MonoBehaviour
     [SerializeField] Transform muzzle = null;
     [SerializeField] float bulletSpeed = 3;
 
+    ObjectPooler pooler;
+
+    private void Awake()
+    {
+        pooler = GetComponent<ObjectPooler>();
+    }
+
     //Called in TankController
     public void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, muzzle.position, Quaternion.Euler(CalculateBulletInitialRotation()));
+        GameObject bullet = pooler.GetObject();
+
+        if (bullet == null) { return; }
+
+        bullet.transform.rotation = Quaternion.Euler(CalculateBulletInitialRotation());
+        bullet.transform.position = muzzle.position;
+        bullet.SetActive(true);
         bullet.GetComponent<Rigidbody>().velocity = muzzle.up * bulletSpeed;
     }
 

@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 1355462948}
   - component: {fileID: 2286748567110323440}
   - component: {fileID: 4818588613230677761}
+  - component: {fileID: 1454467940747798492}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Player
@@ -364,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad28b01369fb4a0e9a95e2cef4737b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 5
   tankHead: {fileID: 5690149536449318181}
 --- !u!114 &4818588613230677761
 MonoBehaviour:
@@ -381,3 +382,21 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7128932403391918465, guid: 34dadee2f309d4029a77d82841d889f3, type: 3}
   muzzle: {fileID: 944341445}
   bulletSpeed: 10
+--- !u!114 &1454467940747798492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690149537485751459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7657b957903eb48738b960e6a05b1733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectLimit: 5
+  startingObjects: 5
+  createsMoreObjects: 0
+  parent: {fileID: 0}
+  alreadySpawnedObjects: []
+  objectType: {fileID: 7128932403391918465, guid: 34dadee2f309d4029a77d82841d889f3, type: 3}
