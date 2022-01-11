@@ -15,7 +15,7 @@ public class TankController : MonoBehaviour
         shooter = GetComponent<Shooter>();
     }
 
-    public void Update()
+    private void Update()
     {
         tankMover.MoveForward();
         ReadChangeDirectionInput();
