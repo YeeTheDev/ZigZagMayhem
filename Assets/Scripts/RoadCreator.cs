@@ -1,36 +1,51 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadCreator : MonoBehaviour
 {
+    [Range(0, 100)][SerializeField] float distanceToRelocate = 5;
     [SerializeField] float offset = 3.535534f;
-    [SerializeField] float spawnTime = 1.25f;
-    [SerializeField] Transform startingRoad = null;
 
+    float sqrDistanceLimit;
     Vector3 lastPos;
-    ObjectPooler pooler;
+    Transform player;
+    Dictionary<string, Animator> animators = new Dictionary<string, Animator>();
 
     private void Awake()
     {
-        lastPos = startingRoad.position;
-        pooler = GetComponent<ObjectPooler>();
+        sqrDistanceLimit = distanceToRelocate * distanceToRelocate;
+        lastPos = transform.GetChild(transform.childCount - 1).position;
+        player = GameObject.FindWithTag("Player").transform;
+
+        CreateAnimatorsDictionary();
     }
 
-    public void Start()
+    private void CreateAnimatorsDictionary()
     {
-        InvokeRepeating("CreateNewRoadPart", spawnTime, spawnTime);
+        foreach (Transform child in transform)
+        {
+            animators.Add(child.name, child.GetComponent<Animator>());
+        }
     }
 
-    private void CreateNewRoadPart()
+    private void Update() { CheckPlayerDistance(); }
+
+    private void CheckPlayerDistance()
     {
-        Transform roadPart = pooler.GetObject().transform;
-        roadPart.position = RandomSpawnPoint();
-        roadPart.gameObject.SetActive(true);
+        if ((player.position - lastPos).sqrMagnitude <= sqrDistanceLimit) { RelocateRoadPart(); }
+    }
+
+    private void RelocateRoadPart()
+    {
+        Transform roadPart = transform.GetChild(0);
+        animators[roadPart.name].SetTrigger("Relocate");
+
+        roadPart.position = RandomNextPosition();
+        roadPart.SetAsLastSibling();
         lastPos = roadPart.position;
-
-        pooler.EnqueueObject(roadPart.gameObject);
     }
 
-    private Vector3 RandomSpawnPoint()
+    private Vector3 RandomNextPosition()
     {
         Vector3 spawnPos = lastPos + Vector3.one * offset;
         spawnPos.x += Random.Range(0, 100) < 50 ? 0 : -offset * 2;
