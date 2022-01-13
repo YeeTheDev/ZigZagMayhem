@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RoadCreator : MonoBehaviour
 {
+    [Tooltip("The value will be squared")]
     [Range(0, 100)][SerializeField] float distanceToRelocate = 5;
     [SerializeField] float offset = 3.535534f;
 
