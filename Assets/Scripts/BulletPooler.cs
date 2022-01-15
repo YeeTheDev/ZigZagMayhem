@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour
+public class BulletPooler : MonoBehaviour
 {
     [SerializeField] int objectLimit = 0;
     [SerializeField] int startingObjects = 0;
