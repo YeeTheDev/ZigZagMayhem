@@ -23,7 +23,7 @@ public class Shooter : MonoBehaviour
         bullet.transform.rotation = Quaternion.Euler(CalculateBulletInitialRotation());
         bullet.transform.position = muzzle.position;
         bullet.SetActive(true);
-        bullet.GetComponent<Rigidbody>().velocity = muzzle.up * bulletSpeed;
+        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
     }
 
     private Vector3 CalculateBulletInitialRotation()
