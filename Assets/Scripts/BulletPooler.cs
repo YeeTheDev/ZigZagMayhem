@@ -7,26 +7,11 @@ public class BulletPooler : MonoBehaviour
     [SerializeField] int startingObjects = 0;
     [SerializeField] bool createsMoreObjects = false;
     [SerializeField] Transform parent = null;
-    [SerializeField] GameObject[] alreadySpawnedObjects = null;
     [SerializeField] GameObject objectType = null;
 
     Queue<GameObject> objectQueue = new Queue<GameObject>();
 
-    private void Awake()
-    {
-        CreateInitialObjects();
-        EnqueueInitialObjects();
-    }
-
-    private void EnqueueInitialObjects()
-    {
-        if (alreadySpawnedObjects.Length <= 0) { return; }
-
-        foreach (GameObject gO in alreadySpawnedObjects)
-        {
-            objectQueue.Enqueue(gO);
-        }
-    }
+    private void Awake() { CreateInitialObjects(); }
 
     private void CreateInitialObjects()
     {
@@ -34,7 +19,7 @@ public class BulletPooler : MonoBehaviour
         {
             if (objectQueue.Count >= objectLimit) { break; }
 
-            EnqueueObject(CreateNewObject());
+            CreateNewObject();
         }
     }
 
@@ -43,15 +28,11 @@ public class BulletPooler : MonoBehaviour
         GameObject poolObject = Instantiate(objectType);
         Bullet bullet = poolObject.GetComponent<Bullet>();
 
-        if (bullet != null) { bullet.SetPooler = this; }
-
-        if (parent != null)
-        {
-            poolObject.transform.position = parent.position;
-            poolObject.transform.parent = parent;
-        }
-
+        bullet.SetPooler = this;
         poolObject.SetActive(false);
+
+        if (parent != null) { poolObject.transform.parent = parent; }
+
         return poolObject;
     }
 
@@ -63,8 +44,5 @@ public class BulletPooler : MonoBehaviour
         return objectQueue.Dequeue();
     }
 
-    public void EnqueueObject(GameObject objectToEnqueue)
-    {
-        objectQueue.Enqueue(objectToEnqueue);
-    }
+    public void EnqueueObject(GameObject objectToEnqueue) { objectQueue.Enqueue(objectToEnqueue); }
 }
