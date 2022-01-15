@@ -6,11 +6,11 @@ public class Shooter : MonoBehaviour
     [SerializeField] Transform muzzle = null;
     [SerializeField] float bulletSpeed = 3;
 
-    ObjectPooler pooler;
+    BulletPooler pooler;
 
     private void Awake()
     {
-        pooler = GetComponent<ObjectPooler>();
+        pooler = GetComponent<BulletPooler>();
     }
 
     //Called in TankController
