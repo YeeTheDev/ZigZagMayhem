@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            other.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
     }
