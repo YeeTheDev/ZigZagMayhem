@@ -16,5 +16,9 @@ A small game created to practice the following patterns:
 
 5. Object Pooling
 	
-	Object Pooling is used to recycle the endless path, re-use bullets, and to spawn enemies.
-	I didn't use the Unity Pool Interface due to it being a 2021v feature, so I created a semi-generic Object Pool Monobehaviour class to be reused in all other areas where a pooler was needed.
+	When I first implemented the Object Pooling system I realized that I didn't need it to be generic, so I created two, and maybe arguably, three, types of object pooling:
+	1. The Road Creator script uses a list that Unity already has in the Transform class, Child, I used this because the pooling will always occur in a very orderly fashion, the first in line will always become the last in line. Instead of using an overcomplicated pooling system, I just move the first part of the road created and then set it as the last child. Lastly, the road parts don't need to know about the object pooler, which makes things easier to code.
+	2. The original pooler was supposed to be a somewhat generic class to be used as a pooler for any sort of object, I realized this wasn't truly necessary so I changed it to a more specific type of pooler, a Bullet Pooler. In this case the bullets need to know about the pooler to enqueue themselves after finishing whatever they were doing which might occur at pretty much anytime between 0 and 4 seconds, that means that the first out might not be the first to return to the queue, it might be the last, so I actually needed a more complicated list (Queue in this case), still FIFO, but with the capacity to let any bullet object to enqueue at any time.
+
+	This was not intended, after some refactors I realized I used the same pattern in two very different ways which was kinda cool when I noticed.
+	
