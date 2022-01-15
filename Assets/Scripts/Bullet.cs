@@ -5,24 +5,17 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float timeToReuse = 4;
 
-    int timesEnqueue;
-    ObjectPooler pooler;
+    BulletPooler pooler;
 
-    public ObjectPooler SetPooler { set => pooler = value; }
+    public BulletPooler SetPooler { set => pooler = value; }
 
-    private void OnEnable()
-    {
-        StartCoroutine(DisableBullet());
-    }
+    private void OnEnable() { StartCoroutine(DisableBullet()); }
+    private void OnDisable() { pooler.EnqueueObject(gameObject); }
 
     private IEnumerator DisableBullet()
     {
-        timesEnqueue++;
-        if (timesEnqueue <= 1) { yield break; }
-
         yield return new WaitForSeconds(timeToReuse);
 
         gameObject.SetActive(false);
-        pooler.EnqueueObject(gameObject);
     }
 }
