@@ -5,6 +5,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject bulletPrefab = null;
     [SerializeField] Transform muzzle = null;
     [SerializeField] float bulletSpeed = 3;
+    [SerializeField] ParticleSystem muzzleDust = null;
 
     BulletPooler pooler;
 
@@ -24,6 +25,8 @@ public class Shooter : MonoBehaviour
         bullet.transform.position = muzzle.position;
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+
+        muzzleDust.Play();
     }
 
     private Vector3 CalculateBulletInitialRotation()
