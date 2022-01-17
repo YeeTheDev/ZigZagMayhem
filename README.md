@@ -12,6 +12,12 @@ A small game created to practice the following patterns:
 8. Composite Pattern
 9. MVP Pattern
 
+**--- Why do this? ---**
+
+This project is for practice purposes, I've been taking a lot of courses and reading a lot about this patterns and I wanted to test them on my own.
+
+Please, do not expect super tidy or clean code since I'll be forcing a lot of this patterns, for instance, my approach of the Singleton Pattern is overkill, there's no need for such complex code, a very basic singleton would be more than enough, but as I said, this game is being created for practicing purposes so I'm doing things that I wouldn't normally do.
+
 **--- Patterns and Implementation ---**
 
 1. Observer Pattern
@@ -21,7 +27,7 @@ A small game created to practice the following patterns:
 
 2. Singleton Pattern
 
-	In this case I wanted to play a little bit with sealed classes and a way to create singletons in a much more tidy way. Instead of having a class in the hierarchy, I created a class that keep track of all the items that aren't supposed to be destroyed on load, you can even remove them from the list so you can destroy them if the need is there. I also like having certain control in the hierarchy and having to add a "Singleton Creator" class allows for a more tidy approach than simply having a list of object to spawn and not destroy on load.
+	In this case I wanted to play a little bit with sealed classes and a way to create singletons. Instead of having a class in the hierarchy, I created a class that keeps track of all the items that aren't supposed to be destroyed on load, you can even remove them from the list so you can destroy them if the need is there.
 	
 	The big downside is that I used strings to check, but I suppose you could use types instead, like checking if there's another "PlayerController" in there and act accordingly.
 
