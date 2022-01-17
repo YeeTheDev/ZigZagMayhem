@@ -41,16 +41,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnDisable() { Invoke("Respawn", respawnTime); }
+    private void OnDisable() { Invoke("Spawn", respawnTime); }
 
-    private void Respawn()
+    private void Spawn()
+    {
+        transform.position = CalculateSpawnPoint();
+        gameObject.SetActive(true);
+    }
+
+    private Vector3 CalculateSpawnPoint()
     {
         Vector3 respawnPoint = player.position;
         respawnPoint.x += Random.Range(minSpawnDistance, maxSpawnDistance);
         respawnPoint.z += Random.Range(maxSpawnDistance / 2, maxSpawnDistance);
-
-        transform.position = respawnPoint;
-
-        gameObject.SetActive(true);
+        respawnPoint.y = 1;
+        return respawnPoint;
     }
 }
