@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerStats = player.GetComponent<PlayerStats>();
+        gameObject.SetActive(false);
     }
 
     private void Update() { FollowPlayer(); }
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnDisable() { Invoke("Spawn", respawnTime); }
+    private void OnDisable() { Invoke("Spawn", Random.Range(1, respawnTime)); }
 
     private void Spawn()
     {
