@@ -7,12 +7,17 @@ A small game created to practice the following patterns:
 3. Finite State Machines
 4. State Pattern
 5. Object Pooling
-6. Stratey Pattern
+6. Strategy Pattern
 7. Decorator Pattern
 8. Composite Pattern
 9. MVP Pattern
 
 **--- Patterns and Implementation ---**
+
+1. Observer Pattern
+2. MVP Pattern
+
+	The MVP pattern is pretty much linked to the observer pattern. The idea is to have a "Presenter" that is aware of a "Module", but the module cannot know about the presenter, in this case the Module is the Player Statistics and the Presenter is the User Interface. To achieve this an event is used, nothing fancy, just a simple action.
 
 5. Object Pooling
 	
