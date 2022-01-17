@@ -19,6 +19,12 @@ A small game created to practice the following patterns:
 
 	The MVP pattern is pretty much linked to the observer pattern. The idea is to have a "Presenter" that is aware of a "Module", but the module cannot know about the presenter, in this case the Module is the Player Statistics and the Presenter is the User Interface. To achieve this an event is used, nothing fancy, just a simple action.
 
+2. Singleton Pattern
+
+	In this case I wanted to play a little bit with sealed classes and a way to create singletons in a much more tidy way. Instead of having a class in the hierarchy, I created a class that keep track of all the items that aren't supposed to be destroyed on load, you can even remove them from the list so you can destroy them if the need is there. I also like having certain control in the hierarchy and having to add a "Singleton Creator" class allows for a more tidy approach than simply having a list of object to spawn and not destroy on load.
+	
+	The big downside is that I used strings to check, but I suppose you could use types instead, like checking if there's another "PlayerController" in there and act accordingly.
+
 5. Object Pooling
 	
 	When I first implemented the Object Pooling system I realized that I didn't need it to be generic, so I created two, and maybe arguably, three, types of object pooling:
