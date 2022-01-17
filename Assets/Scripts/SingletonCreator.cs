@@ -10,6 +10,5 @@ public class SingletonCreator : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
-        
     }
 }
