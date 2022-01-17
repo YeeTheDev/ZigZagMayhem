@@ -7,8 +7,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed = 0;
 
     Transform player;
+    PlayerStats stats;
 
-    private void Awake() { player = GameObject.FindGameObjectWithTag("Player").transform; }
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        stats = player.GetComponent<PlayerStats>();
+    }
 
     private void Update() { FollowPlayer(); }
 
@@ -29,7 +34,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameObject.SetActive(false);
-            Debug.Log("Take that biatch!");
+            stats.UpdateHealth(-1);
         }
     }
 }
