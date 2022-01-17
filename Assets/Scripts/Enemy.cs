@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float speed = 0;
+    [SerializeField] float speed = 0f;
+    [SerializeField] float respawnTime = 5f;
+    [SerializeField] float minSpawnDistance = -10f;
+    [SerializeField] float maxSpawnDistance = 10f;
 
     Transform player;
     PlayerStats playerStats;
@@ -36,5 +39,18 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
             playerStats.UpdateHealth(-1);
         }
+    }
+
+    private void OnDisable() { Invoke("Respawn", respawnTime); }
+
+    private void Respawn()
+    {
+        Vector3 respawnPoint = player.position;
+        respawnPoint.x += Random.Range(minSpawnDistance, maxSpawnDistance);
+        respawnPoint.z += Random.Range(maxSpawnDistance / 2, maxSpawnDistance);
+
+        transform.position = respawnPoint;
+
+        gameObject.SetActive(true);
     }
 }
