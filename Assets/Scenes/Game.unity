@@ -395,6 +395,14 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -636,6 +644,14 @@ PrefabInstance:
     - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
@@ -1004,6 +1020,14 @@ PrefabInstance:
     - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
@@ -6276,6 +6300,14 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
       value: Enemy (5)
@@ -6461,6 +6493,14 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -6526,6 +6566,14 @@ PrefabInstance:
     - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
@@ -6650,6 +6698,14 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
       value: Enemy (7)
@@ -6710,6 +6766,14 @@ PrefabInstance:
     - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: maxSpawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137208, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: minSpawnDistance
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
