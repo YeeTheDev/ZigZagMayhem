@@ -8,15 +8,13 @@ public class Enemy : MonoBehaviour
 
     Transform player;
 
-    private void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    private void Awake() { player = GameObject.FindGameObjectWithTag("Player").transform; }
 
-    private void Update()
+    private void Update() { FollowPlayer(); }
+
+    private void FollowPlayer()
     {
         transform.LookAt(player);
-
         transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
 
@@ -26,6 +24,12 @@ public class Enemy : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+            Debug.Log("Take that biatch!");
         }
     }
 }
