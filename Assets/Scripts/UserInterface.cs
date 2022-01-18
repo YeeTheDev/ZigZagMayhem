@@ -15,7 +15,7 @@ public class UserInterface : MonoBehaviour
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerStats.onHealthChange += UpdateHealthBar;
 
-        sizePerHeart = healthBar.sizeDelta.x / playerStats.Health;
+        sizePerHeart = healthBar.sizeDelta.x / playerStats.MaxHealth;
     }
 
     private void UpdateHealthBar()
