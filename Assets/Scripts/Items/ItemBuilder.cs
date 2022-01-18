@@ -16,17 +16,12 @@ public class ItemBuilder : MonoBehaviour
     {
         foreach (MonoBehaviour itemToCheck in abilities)
         {
-            IITem item = (IITem)itemToCheck;
+            IITem item = itemToCheck as IITem;
 
             if (item != null)
             {
                 itemSequence.Add(item);
             }
-        }
-
-        foreach (IITem item in itemSequence)
-        {
-            Debug.Log(item.ToString());
         }
     }
 }
