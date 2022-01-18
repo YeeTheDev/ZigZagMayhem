@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] int maxHealth = 3;
-
     public event Action onHealthChange;
 
-    public int Health { get => maxHealth; }
+    [SerializeField] int maxHealth = 3;
+    public int MaxHealth { get => maxHealth; }
+
+    public int Health { get; set; }
+
+    private void Awake() { Health = maxHealth; }
 
     public void UpdateHealth(int modifier)
     {
-        maxHealth = Mathf.Clamp(maxHealth + modifier, 0, maxHealth);
+        Health = Mathf.Clamp(Health + modifier, 0, maxHealth);
         if (onHealthChange != null) { onHealthChange(); }
     }
 }
