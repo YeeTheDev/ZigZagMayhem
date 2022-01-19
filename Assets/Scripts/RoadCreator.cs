@@ -6,6 +6,7 @@ public class RoadCreator : MonoBehaviour
     [Tooltip("The value will be squared")]
     [Range(0, 100)][SerializeField] float distanceToRelocate = 5;
     [SerializeField] float offset = 3.535534f;
+    [SerializeField] ItemSpawner itemSpawner = null;
 
     float sqrDistanceLimit;
     Vector3 lastPos;
@@ -44,6 +45,8 @@ public class RoadCreator : MonoBehaviour
         roadPart.position = RandomNextPosition();
         roadPart.SetAsLastSibling();
         lastPos = roadPart.position;
+
+        itemSpawner.CheckIfItemSpawns(lastPos);
     }
 
     private Vector3 RandomNextPosition()
