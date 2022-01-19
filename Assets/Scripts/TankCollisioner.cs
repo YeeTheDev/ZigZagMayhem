@@ -8,15 +8,17 @@ public class TankCollisioner : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            StartCoroutine(ActivateItem(other.GetComponent<ItemBuilder>().ItemSequence));
+            StartCoroutine(ActivateItem(other.transform));
         }
     }
 
-    private IEnumerator ActivateItem(List<IITem> itemSequence)
+    private IEnumerator ActivateItem(Transform item)
     {
-        foreach (IITem item in itemSequence)
+        List<IITem> itemSequence = item.GetComponent<ItemBuilder>().GetItemSequence();
+
+        foreach (IITem itemToUse in itemSequence)
         {
-            yield return item.UseItem(transform);
+            yield return itemToUse.UseItem(transform);
         }
     }
 }
