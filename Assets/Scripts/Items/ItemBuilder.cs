@@ -8,9 +8,16 @@ public class ItemBuilder : MonoBehaviour
 
     List<IITem> itemSequence = new List<IITem>();
 
-    public List<IITem> ItemSequence { get => itemSequence; }
+    Collider col;
+    MeshRenderer meshRenderer;
 
-    private void Awake() { CreateItemSequence(); }
+    private void Awake()
+    {
+        col = GetComponent<Collider>();
+        meshRenderer = GetComponent<MeshRenderer>();
+
+        CreateItemSequence();
+    }
 
     private void CreateItemSequence()
     {
@@ -23,5 +30,13 @@ public class ItemBuilder : MonoBehaviour
                 itemSequence.Add(item);
             }
         }
+    }
+
+    public List<IITem> GetItemSequence()
+    {
+        col.enabled = false;
+        meshRenderer.enabled = false;
+
+        return itemSequence;
     }
 }
