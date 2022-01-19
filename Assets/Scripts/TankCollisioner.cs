@@ -18,7 +18,5 @@ public class TankCollisioner : MonoBehaviour
         {
             yield return item.UseItem(transform);
         }
-
-        Debug.Log("Finished Using Item");
     }
 }
