@@ -10,12 +10,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxSpawnDistance = 10f;
 
     Transform player;
-    PlayerStats playerStats;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerStats = player.GetComponent<PlayerStats>();
         gameObject.SetActive(false);
     }
 
@@ -33,12 +31,6 @@ public class Enemy : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
-        }
-
-        if (other.CompareTag("Player"))
-        {
-            gameObject.SetActive(false);
-            playerStats.UpdateHealth(-1);
         }
     }
 

@@ -16,13 +16,13 @@ public class ItemSpawner : MonoBehaviour
 
         if (roadCounter >= roadsBeforeItem)
         {
-            int increasedChangeToItem = chanceToSpawnItem + roadCounter;
+            int increasedChanceToItem = chanceToSpawnItem + roadCounter;
 
-            if (Random.Range(0, 100) < increasedChangeToItem)
+            if (Random.Range(0, 100) < increasedChanceToItem)
             {
                 roadCounter = 0;
 
-                int randomItem = Random.Range(0, items.Length - 1);
+                int randomItem = Random.Range(0, items.Length);
                 GameObject item = Instantiate( items[randomItem]);
 
                 roadPosition.y = item.transform.position.y;

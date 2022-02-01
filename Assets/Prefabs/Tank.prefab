@@ -5214,3 +5214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07292cc24748d4547ad3c62f4d8e8cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibilityColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  tankBodyRenderer: {fileID: 7094549743023290033}
+  tankHeadRenderer: {fileID: 5946022924862889860}
