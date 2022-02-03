@@ -14,7 +14,7 @@ public class BulletPooler : MonoBehaviour
 
     Queue<GameObject> objectQueue = new Queue<GameObject>();
 
-    private void Awake() { CreateInitialObjects(); }
+    private void Start() { CreateInitialObjects(); }
 
     private void CreateInitialObjects()
     {
