@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BulletPooler : MonoBehaviour
 {
+    public event Action onReload;
+
     [SerializeField] int objectLimit = 0;
     [SerializeField] int startingObjects = 0;
     [SerializeField] bool createsMoreObjects = false;
@@ -44,5 +47,9 @@ public class BulletPooler : MonoBehaviour
         return objectQueue.Dequeue();
     }
 
-    public void EnqueueObject(GameObject objectToEnqueue) { objectQueue.Enqueue(objectToEnqueue); }
+    public void EnqueueObject(GameObject objectToEnqueue)
+    {
+        objectQueue.Enqueue(objectToEnqueue);
+        if (onReload != null) { onReload(); }
+    }
 }

@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class Shooter : MonoBehaviour
 {
+    public event Action onShoot;
+
     [SerializeField] GameObject bulletPrefab = null;
     [SerializeField] Transform muzzle = null;
     [SerializeField] float bulletSpeed = 3;
@@ -20,6 +23,8 @@ public class Shooter : MonoBehaviour
         GameObject bullet = pooler.GetObject();
 
         if (bullet == null) { return; }
+
+        if (onShoot != null) { onShoot(); }
 
         bullet.transform.rotation = Quaternion.Euler(CalculateBulletInitialRotation());
         bullet.transform.position = muzzle.position;
