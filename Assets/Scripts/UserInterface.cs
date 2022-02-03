@@ -6,6 +6,7 @@ public class UserInterface : MonoBehaviour
     [SerializeField] RectTransform healthBar = null;
     [SerializeField] TextMeshProUGUI ammoIndicator = null;
     [SerializeField] string takeDamageParameter = "TakeDamage";
+    [SerializeField] string gameOverParameter = "GameOver";
 
     float sizePerHeart;
     Shooter shooter;
@@ -23,6 +24,7 @@ public class UserInterface : MonoBehaviour
         shooter.onShoot += RemoveFromBulletCounter;
         bulletPooler.onReload += AddToBulletCounter;
         playerStats.onHealthChange += UpdateHealthBar;
+        playerStats.onDead += GameOverAnimation;
 
         sizePerHeart = healthBar.sizeDelta.x / playerStats.MaxHealth;
     }
@@ -43,4 +45,6 @@ public class UserInterface : MonoBehaviour
     {
         ammoIndicator.text = addAmmo ? ammoIndicator.text + "|" : ammoIndicator.text.Remove(ammoIndicator.text.Length - 1);
     }
+
+    private void GameOverAnimation() { animator.SetTrigger(gameOverParameter); }
 }

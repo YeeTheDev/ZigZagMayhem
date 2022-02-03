@@ -75,7 +75,6 @@ public class TankCollisioner : MonoBehaviour
     private void SetRenderersColor()
     {
         Color colorToUse = invincibleTimer > 0 ? invincibilityColor : initialColor;
-        Debug.Log(colorToUse);
         tankBodyRenderer.material.color = colorToUse;
         tankHeadRenderer.material.color = colorToUse;
     }

@@ -9,6 +9,9 @@ public class PlayerStats : MonoBehaviour
     public event Action onDead;
 
     [SerializeField] int maxHealth = 3;
+    [SerializeField] ParticleSystem smoke = null;
+    [SerializeField] AudioClip explosionClip = null;
+
     public int MaxHealth { get => maxHealth; }
 
     public int Health { get; set; }
@@ -22,5 +25,10 @@ public class PlayerStats : MonoBehaviour
         if (Health <= 0) { PlayDeadSequence(); }
     }
 
-    public void PlayDeadSequence() { if (onDead != null) { onDead(); } }
+    public void PlayDeadSequence()
+    {
+        if (onDead != null) { onDead(); }
+        smoke.Play();
+        GetComponent<AudioSource>().PlayOneShot(explosionClip);
+    }
 }

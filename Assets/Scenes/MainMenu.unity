@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 763f09d0a6f414bde849386618f56ac0, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1070,6 +1070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137210, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137212, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1491,6 +1495,10 @@ PrefabInstance:
     - target: {fileID: 4696560829180137209, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696560829180137210, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4696560829180137212, guid: 5a395b6e636774d1c9db7a27dd170a61, type: 3}
       propertyPath: m_RootOrder
