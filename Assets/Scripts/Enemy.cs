@@ -9,8 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] float respawnTime = 5f;
     [SerializeField] float minSpawnDistance = -10f;
     [SerializeField] float maxSpawnDistance = 10f;
+    [SerializeField] float timeToIncreaseSpeed = 10f;
+    [SerializeField] float speedIncrease = 0.1f;
     [SerializeField] ParticleSystem destroyParticles = null;
 
+    float timer;
     Transform player;
     MeshRenderer meshRenderer;
     Collider meshCollider;
@@ -32,7 +35,11 @@ public class Enemy : MonoBehaviour
         playerStats.onDead += DisableMovement;
     }
 
-    private void Update() { FollowPlayer(); }
+    private void Update()
+    {
+        FollowPlayer();
+        IncreaseDifficulty();
+    }
 
     private void FollowPlayer()
     {
@@ -40,6 +47,16 @@ public class Enemy : MonoBehaviour
 
         transform.LookAt(player);
         transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+    }
+
+    private void IncreaseDifficulty()
+    {
+        timer += Time.deltaTime;
+        if (timer >= timeToIncreaseSpeed)
+        {
+            speed += speedIncrease;
+            timer = 0;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UserInterface : MonoBehaviour
 {
     [SerializeField] RectTransform healthBar = null;
+    [SerializeField] Text timerText = null;
     [SerializeField] TextMeshProUGUI ammoIndicator = null;
     [SerializeField] string takeDamageParameter = "TakeDamage";
     [SerializeField] string gameOverParameter = "GameOver";
 
+    bool gameOver;
+    float timer;
     float sizePerHeart;
     Shooter shooter;
     PlayerStats playerStats;
@@ -29,6 +33,22 @@ public class UserInterface : MonoBehaviour
         sizePerHeart = healthBar.sizeDelta.x / playerStats.MaxHealth;
     }
 
+    private void Update()
+    {
+        DisplayTimer();
+    }
+
+    private void DisplayTimer()
+    {
+        if (gameOver) { return; }
+
+        timer += Time.deltaTime;
+        float minutes = Mathf.FloorToInt(timer / 60);
+        float seconds = Mathf.FloorToInt(timer % 60);
+
+        timerText.text = $"Time   {minutes:00}:{seconds:00}";
+    }
+
     private void UpdateHealthBar(bool takeDamage)
     {
         if (takeDamage) { animator.SetTrigger(takeDamageParameter); }
@@ -46,5 +66,9 @@ public class UserInterface : MonoBehaviour
         ammoIndicator.text = addAmmo ? ammoIndicator.text + "|" : ammoIndicator.text.Remove(ammoIndicator.text.Length - 1);
     }
 
-    private void GameOverAnimation() { animator.SetTrigger(gameOverParameter); }
+    private void GameOverAnimation()
+    {
+        gameOver = true;
+        animator.SetTrigger(gameOverParameter);
+    }
 }

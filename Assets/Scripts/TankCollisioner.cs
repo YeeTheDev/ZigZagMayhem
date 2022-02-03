@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TankCollisioner : MonoBehaviour
 {
-
     [SerializeField] MeshRenderer tankBodyRenderer = null;
     [SerializeField] MeshRenderer tankHeadRenderer = null;
 
