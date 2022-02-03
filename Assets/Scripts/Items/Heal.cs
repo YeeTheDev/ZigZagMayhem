@@ -1,12 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Heal : MonoBehaviour, IITem
 {
-    public IEnumerator UseItem(Transform player)
+    [SerializeField] AudioClip healSound = null;
+
+    public IEnumerator UseItem(Transform player, AudioSource audioSource)
     {
         player.GetComponent<PlayerStats>().UpdateHealth(1);
+        audioSource.PlayOneShot(healSound);
+
         yield break;
     }
 }

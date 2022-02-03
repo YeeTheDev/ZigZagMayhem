@@ -7,12 +7,12 @@ public class DelayDecorator : MonoBehaviour, IITem
     [SerializeField] float delayTime;
     [SerializeField] MonoBehaviour itemAbility = null;
 
-    public IEnumerator UseItem(Transform t = null)
+    public IEnumerator UseItem(Transform t = null, AudioSource audioSource = null)
     {
         yield return new WaitForSeconds(delayTime);
 
         IITem item = itemAbility as IITem;
 
-        if (item != null) { yield return item.UseItem(t); }
+        if (item != null) { yield return item.UseItem(t, audioSource); }
     }
 }

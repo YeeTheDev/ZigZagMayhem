@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class DestroyEnemies : MonoBehaviour, IITem
 {
-    public IEnumerator UseItem(Transform t = null)
+    [SerializeField] AudioClip thunderClip = null;
+
+    public IEnumerator UseItem(Transform t = null, AudioSource audioSource = null)
     {
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            enemy.SetActive(false);
+            enemy.GetComponent<Enemy>().PlayDestroyEffect();
         }
+
+        audioSource.PlayOneShot(thunderClip);
 
         yield break;
     }

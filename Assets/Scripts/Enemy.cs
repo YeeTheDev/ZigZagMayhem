@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,45 +9,73 @@ public class Enemy : MonoBehaviour
     [SerializeField] float respawnTime = 5f;
     [SerializeField] float minSpawnDistance = -10f;
     [SerializeField] float maxSpawnDistance = 10f;
+    [SerializeField] ParticleSystem destroyParticles = null;
 
     Transform player;
+    MeshRenderer meshRenderer;
+    Collider meshCollider;
+    AudioSource audioSource;
+    PlayerFollower playerFollower;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshCollider = GetComponent<Collider>();
+        playerFollower = Camera.main.GetComponent<PlayerFollower>();
+
+        Invoke("Spawn", UnityEngine.Random.Range(1, respawnTime));
     }
 
     private void Update() { FollowPlayer(); }
 
     private void FollowPlayer()
     {
+        if (!meshRenderer.enabled) { return; }
+
         transform.LookAt(player);
         transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("Player"))
         {
-            other.gameObject.SetActive(false);
-            gameObject.SetActive(false);
+            if (other.transform != player) { other.gameObject.SetActive(false); };
+            PlayDestroyEffect();
         }
     }
 
-    private void OnDisable() { Invoke("Spawn", Random.Range(1, respawnTime)); }
+    public void PlayDestroyEffect()
+    {
+        if (!meshRenderer.enabled) { return; }
+
+        audioSource.Play();
+        destroyParticles.Play();
+        IsEnemyEnabled(false);
+        playerFollower.IncreaseShakeTimer();
+
+        Invoke("Spawn", UnityEngine.Random.Range(1, respawnTime));
+    }
 
     private void Spawn()
     {
         transform.position = CalculateSpawnPoint();
-        gameObject.SetActive(true);
+        IsEnemyEnabled(true);
+    }
+
+    private void IsEnemyEnabled(bool isEnabled)
+    {
+        meshRenderer.enabled = isEnabled;
+        meshCollider.enabled = isEnabled;
     }
 
     private Vector3 CalculateSpawnPoint()
     {
         Vector3 respawnPoint = player.position;
-        respawnPoint.x += Random.Range(minSpawnDistance, maxSpawnDistance);
-        respawnPoint.z += Random.Range(maxSpawnDistance / 2, maxSpawnDistance);
+        respawnPoint.x += UnityEngine.Random.Range(minSpawnDistance, maxSpawnDistance);
+        respawnPoint.z += UnityEngine.Random.Range(maxSpawnDistance / 2, maxSpawnDistance);
         respawnPoint.y = 1;
         return respawnPoint;
     }

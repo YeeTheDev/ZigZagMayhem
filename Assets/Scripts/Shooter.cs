@@ -10,11 +10,13 @@ public class Shooter : MonoBehaviour
     [SerializeField] float bulletSpeed = 3;
     [SerializeField] ParticleSystem muzzleDust = null;
 
+    AudioSource audioSource;
     BulletPooler pooler;
 
     private void Awake()
     {
         pooler = GetComponent<BulletPooler>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     //Called in TankController
@@ -31,6 +33,7 @@ public class Shooter : MonoBehaviour
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
 
+        audioSource.Play();
         muzzleDust.Play();
     }
 

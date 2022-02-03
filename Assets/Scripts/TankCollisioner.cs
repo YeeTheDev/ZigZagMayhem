@@ -14,11 +14,13 @@ public class TankCollisioner : MonoBehaviour
 
     Coroutine invincibleCoroutine;
     PlayerStats playerStats;
+    AudioSource audioSource;
 
     private void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
         initialColor = tankBodyRenderer.material.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,8 +32,6 @@ public class TankCollisioner : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.SetActive(false);
-
             if (invincibleTimer > 0) { return; }
 
             playerStats.UpdateHealth(-1);
@@ -44,8 +44,10 @@ public class TankCollisioner : MonoBehaviour
 
         foreach (IITem itemToUse in itemSequence)
         {
-            yield return itemToUse.UseItem(transform);
+            yield return itemToUse.UseItem(transform, audioSource);
         }
+
+        Destroy(item.gameObject);
     }
 
     public void SetInvincibility(float invincibilityTime, Color invincibilityColor)
