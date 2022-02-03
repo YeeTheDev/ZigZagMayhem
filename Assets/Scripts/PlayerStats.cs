@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public event Action onHealthChange;
+    public event Action<bool> onHealthChange;
+    public event Action onDead;
 
     [SerializeField] int maxHealth = 3;
     public int MaxHealth { get => maxHealth; }
@@ -17,6 +18,9 @@ public class PlayerStats : MonoBehaviour
     public void UpdateHealth(int modifier)
     {
         Health = Mathf.Clamp(Health + modifier, 0, maxHealth);
-        if (onHealthChange != null) { onHealthChange(); }
+        if (onHealthChange != null) { onHealthChange(modifier < 0); }
+        if (Health <= 0) { PlayDeadSequence(); }
     }
+
+    public void PlayDeadSequence() { if (onDead != null) { onDead(); } }
 }

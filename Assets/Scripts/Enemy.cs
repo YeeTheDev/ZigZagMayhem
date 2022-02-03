@@ -16,16 +16,20 @@ public class Enemy : MonoBehaviour
     Collider meshCollider;
     AudioSource audioSource;
     PlayerFollower playerFollower;
+    PlayerStats playerStats;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerStats = player.GetComponent<PlayerStats>();
         audioSource = GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshCollider = GetComponent<Collider>();
         playerFollower = Camera.main.GetComponent<PlayerFollower>();
 
         Invoke("Spawn", UnityEngine.Random.Range(1, respawnTime));
+
+        playerStats.onDead += DisableMovement;
     }
 
     private void Update() { FollowPlayer(); }
@@ -78,5 +82,11 @@ public class Enemy : MonoBehaviour
         respawnPoint.z += UnityEngine.Random.Range(maxSpawnDistance / 2, maxSpawnDistance);
         respawnPoint.y = 1;
         return respawnPoint;
+    }
+
+    private void DisableMovement()
+    {
+        CancelInvoke();
+        enabled = false;
     }
 }

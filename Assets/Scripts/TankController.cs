@@ -5,14 +5,19 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     [Range(-10,10)][SerializeField] float mousePrecision = 4;
+    [SerializeField] float deathHeight = -2f;
 
     TankMover tankMover;
     Shooter shooter;
+    PlayerStats playerStats;
 
     private void Awake()
     {
         tankMover = GetComponent<TankMover>();
         shooter = GetComponent<Shooter>();
+        playerStats = GetComponent<PlayerStats>();
+
+        playerStats.onDead += () => enabled = false; ;
     }
 
     private void Update()
@@ -21,6 +26,7 @@ public class TankController : MonoBehaviour
         ReadChangeDirectionInput();
         tankMover.RotateTankHead(CalculateMouseCursorPoint());
         ReadShootInput();
+        CheckIfFall();
     }
 
     private void ReadChangeDirectionInput() { if (Input.GetKeyDown(KeyCode.Space)) { tankMover.ChangeMoveDirection(); } }
@@ -34,4 +40,6 @@ public class TankController : MonoBehaviour
     }
 
     private void ReadShootInput() { if (Input.GetKeyDown(KeyCode.Mouse0)) { shooter.Shoot(); } }
+
+    private void CheckIfFall() { if (transform.position.y < deathHeight) { playerStats.PlayDeadSequence(); } }
 }

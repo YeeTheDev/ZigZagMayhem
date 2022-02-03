@@ -5,17 +5,20 @@ public class UserInterface : MonoBehaviour
 {
     [SerializeField] RectTransform healthBar = null;
     [SerializeField] TextMeshProUGUI ammoIndicator = null;
+    [SerializeField] string takeDamageParameter = "TakeDamage";
 
     float sizePerHeart;
     Shooter shooter;
     PlayerStats playerStats;
     BulletPooler bulletPooler;
+    Animator animator;
 
     private void Awake()
     {
         shooter = GameObject.FindGameObjectWithTag("Player").GetComponent<Shooter>();
         playerStats = shooter.GetComponent<PlayerStats>();
         bulletPooler = shooter.GetComponent<BulletPooler>();
+        animator = GetComponent<Animator>();
 
         shooter.onShoot += RemoveFromBulletCounter;
         bulletPooler.onReload += AddToBulletCounter;
@@ -24,8 +27,10 @@ public class UserInterface : MonoBehaviour
         sizePerHeart = healthBar.sizeDelta.x / playerStats.MaxHealth;
     }
 
-    private void UpdateHealthBar()
+    private void UpdateHealthBar(bool takeDamage)
     {
+        if (takeDamage) { animator.SetTrigger(takeDamageParameter); }
+
         Vector2 updatedSize = healthBar.sizeDelta;
         updatedSize.x = sizePerHeart * playerStats.Health;
         healthBar.sizeDelta = updatedSize;
