@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     PlayerFollower playerFollower;
     PlayerStats playerStats;
 
+    public bool IsEnemyEnabled { get => meshRenderer.enabled; }
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -74,7 +76,7 @@ public class Enemy : MonoBehaviour
 
         audioSource.Play();
         destroyParticles.Play();
-        IsEnemyEnabled(false);
+        SetEnemyEnabled(false);
         playerFollower.IncreaseShakeTimer();
 
         Invoke("Spawn", UnityEngine.Random.Range(1, respawnTime));
@@ -83,10 +85,10 @@ public class Enemy : MonoBehaviour
     private void Spawn()
     {
         transform.position = CalculateSpawnPoint();
-        IsEnemyEnabled(true);
+        SetEnemyEnabled(true);
     }
 
-    private void IsEnemyEnabled(bool isEnabled)
+    private void SetEnemyEnabled(bool isEnabled)
     {
         meshRenderer.enabled = isEnabled;
         meshCollider.enabled = isEnabled;
