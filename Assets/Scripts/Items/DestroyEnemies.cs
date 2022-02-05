@@ -1,16 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyEnemies : MonoBehaviour, IITem
 {
+    [SerializeField] int maxEnemiesToDestroy = 3;
+    [SerializeField] MonoBehaviour destroyDecorator = null;
     [SerializeField] AudioClip thunderClip = null;
 
-    public IEnumerator UseItem(Transform t = null, AudioSource audioSource = null)
+    IITem effectOnDestroy;
+
+    private void Awake() { effectOnDestroy = (IITem)destroyDecorator; }
+
+    public IEnumerator UseItem(Transform player, AudioSource audioSource)
     {
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        int destroyedEnemies = 0;
+        foreach (GameObject enemyToDestroy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            enemy.GetComponent<Enemy>().PlayDestroyEffect();
+            if (destroyedEnemies >= maxEnemiesToDestroy) { continue; }
+
+            Enemy enemy = enemyToDestroy.GetComponent<Enemy>();
+            if (enemy.IsEnemyEnabled)
+            {
+                enemy.PlayDestroyEffect();
+                destroyedEnemies++;
+                if (effectOnDestroy != null) { yield return effectOnDestroy.UseItem(player, audioSource); };
+            }
         }
 
         audioSource.PlayOneShot(thunderClip);
