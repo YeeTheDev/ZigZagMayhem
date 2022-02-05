@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TankCollisioner : MonoBehaviour
 {
+    public event Action<float> onBecomeInvincible; 
+
     [SerializeField] MeshRenderer tankBodyRenderer = null;
     [SerializeField] MeshRenderer tankHeadRenderer = null;
 
@@ -52,6 +55,8 @@ public class TankCollisioner : MonoBehaviour
     public void SetInvincibility(float invincibilityTime, Color invincibilityColor)
     {
         invincibleTimer += invincibilityTime;
+        if (onBecomeInvincible != null) { onBecomeInvincible(invincibleTimer); }
+
         this.invincibilityColor = invincibilityColor;
 
         if (invincibleCoroutine == null) { invincibleCoroutine = StartCoroutine(Invincibility()); }

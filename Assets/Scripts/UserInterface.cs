@@ -9,12 +9,15 @@ public class UserInterface : MonoBehaviour
     [SerializeField] TextMeshProUGUI ammoIndicator = null;
     [SerializeField] string takeDamageParameter = "TakeDamage";
     [SerializeField] string gameOverParameter = "GameOver";
+    [SerializeField] string invincibilityParameter = "Invulnerability";
+    [SerializeField] string invincibilitySpeedParameter = "InvicibilitySpeed";
 
     bool gameOver;
     float timer;
     float sizePerHeart;
     Shooter shooter;
     PlayerStats playerStats;
+    TankCollisioner tankCollisioner;
     BulletPooler bulletPooler;
     Animator animator;
 
@@ -24,11 +27,13 @@ public class UserInterface : MonoBehaviour
         playerStats = shooter.GetComponent<PlayerStats>();
         bulletPooler = shooter.GetComponent<BulletPooler>();
         animator = GetComponent<Animator>();
+        tankCollisioner = shooter.GetComponent<TankCollisioner>();
 
         shooter.onShoot += RemoveFromBulletCounter;
         bulletPooler.onReload += AddToBulletCounter;
         playerStats.onHealthChange += UpdateHealthBar;
         playerStats.onDead += GameOverAnimation;
+        tankCollisioner.onBecomeInvincible += PlayInvincibilityAnimation;
 
         sizePerHeart = healthBar.sizeDelta.x / playerStats.MaxHealth;
     }
@@ -70,5 +75,11 @@ public class UserInterface : MonoBehaviour
     {
         gameOver = true;
         animator.SetTrigger(gameOverParameter);
+    }
+
+    private void PlayInvincibilityAnimation(float timeToPlay)
+    {
+        animator.SetFloat(invincibilitySpeedParameter, 1 / timeToPlay);
+        animator.SetTrigger(invincibilityParameter);
     }
 }
