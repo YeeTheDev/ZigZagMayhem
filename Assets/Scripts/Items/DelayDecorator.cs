@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DelayDecorator : MonoBehaviour, IITem
 {
-    [SerializeField] float delayTime;
+    [SerializeField] float delayTime = 5f;
+    [SerializeField] Transform visualEffect = null;
     [SerializeField] MonoBehaviour itemAbility = null;
 
     public IEnumerator UseItem(Transform player, AudioSource audioSource = null)
@@ -13,7 +13,7 @@ public class DelayDecorator : MonoBehaviour, IITem
         {
             transform.parent = player;
             transform.position = player.position;
-            transform.GetChild(0).gameObject.SetActive(true);
+            visualEffect.gameObject.SetActive(true);
         }
 
         yield return new WaitForSeconds(delayTime);
