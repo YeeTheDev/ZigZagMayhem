@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float timeToIncreaseSpeed = 10f;
     [SerializeField] float speedIncrease = 0.1f;
     [SerializeField] ParticleSystem destroyParticles = null;
+    [SerializeField] GameObject thunderParticles = null;
 
     float timer;
     Transform player;
@@ -70,9 +71,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void PlayDestroyEffect()
+    public void PlayDestroyEffect(bool killedByItem = false)
     {
         if (!meshRenderer.enabled) { return; }
+
+        if (killedByItem)
+        {
+            thunderParticles.SetActive(true);
+            Invoke("DisableThunderParticles", 0.25f);
+        }
 
         audioSource.Play();
         destroyParticles.Play();
@@ -108,4 +115,6 @@ public class Enemy : MonoBehaviour
         CancelInvoke();
         enabled = false;
     }
+
+    private void DisableThunderParticles() { thunderParticles.SetActive(false); }
 }

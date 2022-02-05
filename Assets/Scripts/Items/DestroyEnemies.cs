@@ -21,7 +21,7 @@ public class DestroyEnemies : MonoBehaviour, IITem
             Enemy enemy = enemyToDestroy.GetComponent<Enemy>();
             if (enemy.IsEnemyEnabled)
             {
-                enemy.PlayDestroyEffect();
+                enemy.PlayDestroyEffect(true);
                 destroyedEnemies++;
                 if (effectOnDestroy != null) { yield return effectOnDestroy.UseItem(player, audioSource); };
             }
