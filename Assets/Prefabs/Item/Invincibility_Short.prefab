@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &802347357484198716
+--- !u!1 &4790789051483873637
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,13 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 802347357484198712}
-  - component: {fileID: 802347357484198713}
-  - component: {fileID: 802347357484198714}
-  - component: {fileID: 802347357484198715}
-  - component: {fileID: 802347357484198711}
-  - component: {fileID: 8848641577266435683}
-  - component: {fileID: 351804473}
+  - component: {fileID: 4790789051483873633}
+  - component: {fileID: 4790789051483873632}
+  - component: {fileID: 4790789051483873635}
+  - component: {fileID: 4790789051483873634}
+  - component: {fileID: 4790789051483873646}
+  - component: {fileID: 3716172590811749434}
+  - component: {fileID: 5286891615673079392}
   m_Layer: 0
   m_Name: Invincibility_Short
   m_TagString: Item
@@ -22,35 +22,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &802347357484198712
+--- !u!4 &4790789051483873633
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 14.142136, y: 0.5, z: 28.284271}
+  m_GameObject: {fileID: 4790789051483873637}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.142136, y: 1, z: 28.284271}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
---- !u!33 &802347357484198713
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4790789051483873632
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
-  m_Mesh: {fileID: 4300000, guid: 2b9df1b25ad9f40a4858e1dec34dc741, type: 2}
---- !u!23 &802347357484198714
+  m_GameObject: {fileID: 4790789051483873637}
+  m_Mesh: {fileID: 4300000, guid: 6c4325408bbcf4564800d8fe73643391, type: 2}
+--- !u!23 &4790789051483873635
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
+  m_GameObject: {fileID: 4790789051483873637}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,6 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: beb351514c56245e598d003486f265bd, type: 2}
   - {fileID: 2100000, guid: 8dd3009f7bb9c42f2b027b91b3e5ac6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -85,55 +86,55 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &802347357484198715
+--- !u!65 &4790789051483873634
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
+  m_GameObject: {fileID: 4790789051483873637}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.414213, y: 4.414213, z: 1.6065992}
-  m_Center: {x: 0.00000011920929, y: 0.7928933, z: 0}
---- !u!114 &802347357484198711
+  m_Size: {x: 1.5, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: -0.03, z: -0.1}
+--- !u!114 &4790789051483873646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
+  m_GameObject: {fileID: 4790789051483873637}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dd0c52b388ea4ea6861e8d8d1f8929b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 8848641577266435683}
---- !u!114 &8848641577266435683
+  - {fileID: 3716172590811749434}
+--- !u!114 &3716172590811749434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
+  m_GameObject: {fileID: 4790789051483873637}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7489657ad74d84c239c899608269ee12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityTime: 5
-  invincibilityColor: {r: 0, g: 0, b: 1, a: 1}
+  invincibilityColor: {r: 0, g: 0.19338262, b: 0.8962264, a: 1}
   invincibilityClip: {fileID: 8300000, guid: 0e7490a2db91d407689be41e506323d1, type: 3}
---- !u!114 &351804473
+--- !u!114 &5286891615673079392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802347357484198716}
+  m_GameObject: {fileID: 4790789051483873637}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eebd058b70f1d4ab1a28d1e8cb0f20cc, type: 3}

@@ -823,15 +823,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadsBeforeItem: 10
-  chanceToSpawnItem: 10
+  chanceToSpawnItem: 100
   items:
-  - {fileID: 802347357484198716, guid: 93c80c1f9060147a8b49e16280208963, type: 3}
-  - {fileID: 6365090755744837748, guid: fd14bb6691fc2490b837253e6df394fb, type: 3}
-  - {fileID: 4290679615005032005, guid: b4cd6cfd5868e4c3599894aee5896156, type: 3}
   - {fileID: 802347357484198716, guid: 873375ff56693453f8258c6d12521ae7, type: 3}
-  - {fileID: 802347357484198716, guid: 813d78b057d004a5286e8c24a0717ad1, type: 3}
-  - {fileID: 6230291390092443749, guid: 56bf4b3af4c7d428f81ee1523bf9833f, type: 3}
-  - {fileID: 2105602124375756252, guid: e3feaa36c10174baab4a952b6fee7aac, type: 3}
+  - {fileID: 4790789051483873637, guid: 813d78b057d004a5286e8c24a0717ad1, type: 3}
 --- !u!4 &354145665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4983026797405523375, guid: 9b030ff7556414ea4ae2678b13a24ba7, type: 3}
@@ -1439,7 +1434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
