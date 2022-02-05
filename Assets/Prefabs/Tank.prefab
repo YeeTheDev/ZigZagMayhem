@@ -10008,7 +10008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45368bbb453e84ee6bdaa48e929cbc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 5
   smoke: {fileID: 1335156406659582191}
   explosionClip: {fileID: 8300000, guid: 7c4a11c4357384f40846e2e4aeffe9c5, type: 3}
 --- !u!114 &4571685829388226624
