@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d821750106491489681c52607b35f0cb, type: 2}
+  - {fileID: 2100000, guid: 81dd7386a9331464aa416851a9e7e609, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 5
+  visualEffect: {fileID: 8662158819362184667}
   itemAbility: {fileID: 7490420843481071787}
 --- !u!1 &5624754393008127209
 GameObject:
