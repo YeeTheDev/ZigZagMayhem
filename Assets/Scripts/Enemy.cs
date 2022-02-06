@@ -6,6 +6,7 @@ using System;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 0f;
+    [SerializeField] float constantHeight = 1.25f;
     [SerializeField] float respawnTime = 5f;
     [SerializeField] float minSpawnDistance = -10f;
     [SerializeField] float maxSpawnDistance = 10f;
@@ -49,7 +50,9 @@ public class Enemy : MonoBehaviour
         if (!meshRenderer.enabled) { return; }
 
         transform.LookAt(player);
-        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        Vector3 followPosition = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        followPosition.y = constantHeight;
+        transform.position = followPosition;
     }
 
     private void IncreaseDifficulty()
@@ -106,7 +109,7 @@ public class Enemy : MonoBehaviour
         Vector3 respawnPoint = player.position;
         respawnPoint.x += UnityEngine.Random.Range(minSpawnDistance, maxSpawnDistance);
         respawnPoint.z += UnityEngine.Random.Range(maxSpawnDistance / 2, maxSpawnDistance);
-        respawnPoint.y = 1;
+        respawnPoint.y = constantHeight;
         return respawnPoint;
     }
 
