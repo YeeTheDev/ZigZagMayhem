@@ -9,7 +9,11 @@ public class Shooter : MonoBehaviour
     [SerializeField] Transform muzzle = null;
     [SerializeField] float bulletSpeed = 3;
     [SerializeField] ParticleSystem muzzleDust = null;
+    [SerializeField] string shootParameter = "Shoot";
 
+    bool finishedShooting = true;
+    GameObject bulletToUse;
+    Animator animator;
     AudioSource audioSource;
     BulletPooler pooler;
 
@@ -17,24 +21,36 @@ public class Shooter : MonoBehaviour
     {
         pooler = GetComponent<BulletPooler>();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     //Called in TankController
-    public void Shoot()
+    public void CheckIfCanShoot()
     {
-        GameObject bullet = pooler.GetObject();
+        if (!finishedShooting) { return; }
 
-        if (bullet == null) { return; }
+        bulletToUse = pooler.GetObject();
 
+        if (bulletToUse == null) { return; }
+
+        finishedShooting = false;
+        animator.SetTrigger(shootParameter);
+    }
+
+    //Called in Animation
+    private void Shoot()
+    {
         if (onShoot != null) { onShoot(); }
 
-        bullet.transform.rotation = Quaternion.Euler(CalculateBulletInitialRotation());
-        bullet.transform.position = muzzle.position;
-        bullet.SetActive(true);
-        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+        bulletToUse.transform.rotation = Quaternion.Euler(CalculateBulletInitialRotation());
+        bulletToUse.transform.position = muzzle.position;
+        bulletToUse.SetActive(true);
+        bulletToUse.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
 
         audioSource.Play();
         muzzleDust.Play();
+
+        finishedShooting = true;
     }
 
     private Vector3 CalculateBulletInitialRotation()

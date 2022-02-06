@@ -39,7 +39,7 @@ public class TankController : MonoBehaviour
         return mouseCursorPoint;
     }
 
-    private void ReadShootInput() { if (Input.GetKeyDown(KeyCode.Mouse0)) { shooter.Shoot(); } }
+    private void ReadShootInput() { if (Input.GetKeyDown(KeyCode.Mouse0)) { shooter.CheckIfCanShoot(); } }
 
     private void CheckIfFall() { if (transform.position.y < deathHeight) { playerStats.PlayDeadSequence(); } }
 }
