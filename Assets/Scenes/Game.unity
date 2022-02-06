@@ -830,6 +830,13 @@ MonoBehaviour:
   roadsBeforeItem: 10
   chanceToSpawnItem: 100
   items:
+  - {fileID: 802347357484198716, guid: 93c80c1f9060147a8b49e16280208963, type: 3}
+  - {fileID: 6365090755744837748, guid: fd14bb6691fc2490b837253e6df394fb, type: 3}
+  - {fileID: 4290679615005032005, guid: b4cd6cfd5868e4c3599894aee5896156, type: 3}
+  - {fileID: 802347357484198716, guid: 873375ff56693453f8258c6d12521ae7, type: 3}
+  - {fileID: 7985620232647350103, guid: e31c6626a793748229979d1a2c33556c, type: 3}
+  - {fileID: 4790789051483873637, guid: 813d78b057d004a5286e8c24a0717ad1, type: 3}
+  - {fileID: 9196707766103719602, guid: 2b279e4638d714176ada6299c6b466e3, type: 3}
   - {fileID: 6230291390092443749, guid: 56bf4b3af4c7d428f81ee1523bf9833f, type: 3}
   - {fileID: 4154224114361371220, guid: 69f0f7048c97c44e193f8f48c5206a3e, type: 3}
   - {fileID: 3449857215746825023, guid: 6d27149016ac84685a59fb4eee1f249c, type: 3}
@@ -3455,6 +3462,18 @@ PrefabInstance:
     - target: {fileID: 5690149537485751459, guid: 60a7eaa80b8a84386b1c7eb746637e22, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841881688125079664, guid: 60a7eaa80b8a84386b1c7eb746637e22, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841881688125079664, guid: 60a7eaa80b8a84386b1c7eb746637e22, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841881688125079664, guid: 60a7eaa80b8a84386b1c7eb746637e22, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60a7eaa80b8a84386b1c7eb746637e22, type: 3}

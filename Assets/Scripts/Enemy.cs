@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speedIncrease = 0.1f;
     [SerializeField] ParticleSystem destroyParticles = null;
     [SerializeField] GameObject thunderParticles = null;
+    [SerializeField] string spawnParameter = "Spawn";
 
     float timer;
     Transform player;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     AudioSource audioSource;
     PlayerFollower playerFollower;
     PlayerStats playerStats;
+    Animator animator;
 
     public bool IsEnemyEnabled { get => meshRenderer.enabled; }
 
@@ -32,6 +34,7 @@ public class Enemy : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshCollider = GetComponent<Collider>();
+        animator = GetComponent<Animator>();
         playerFollower = Camera.main.GetComponent<PlayerFollower>();
 
         Invoke("Spawn", UnityEngine.Random.Range(1, respawnTime));
@@ -95,6 +98,7 @@ public class Enemy : MonoBehaviour
     private void Spawn()
     {
         transform.position = CalculateSpawnPoint();
+        animator.SetTrigger(spawnParameter);
         SetEnemyEnabled(true);
     }
 
