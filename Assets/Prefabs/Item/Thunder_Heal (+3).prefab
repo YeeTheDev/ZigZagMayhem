@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157bacda1635147b8a885465a1f25cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 10
+  delayTime: 15
   visualEffect: {fileID: 546574226938265649}
   itemAbility: {fileID: 6498413259507336432}
 --- !u!1 &5427062045480211244

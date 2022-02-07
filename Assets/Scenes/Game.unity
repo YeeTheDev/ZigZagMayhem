@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadsBeforeItem: 15
-  chanceToSpawnItem: 10
+  chanceToSpawnItem: 5
   items:
   - {fileID: 802347357484198716, guid: 93c80c1f9060147a8b49e16280208963, type: 3}
   - {fileID: 6365090755744837748, guid: fd14bb6691fc2490b837253e6df394fb, type: 3}

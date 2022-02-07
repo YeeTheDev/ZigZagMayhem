@@ -14718,7 +14718,7 @@ MonoBehaviour:
   minSpawnDistance: -30
   maxSpawnDistance: 50
   timeToIncreaseSpeed: 10
-  speedIncrease: 0.2
+  speedIncrease: 0.25
   destroyParticles: {fileID: 4590547738279255057}
   thunderParticles: {fileID: 7439415593341422581}
   spawnParameter: Spawn
