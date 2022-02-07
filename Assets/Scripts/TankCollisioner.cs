@@ -9,10 +9,11 @@ public class TankCollisioner : MonoBehaviour
 
     [SerializeField] MeshRenderer tankBodyRenderer = null;
     [SerializeField] MeshRenderer tankHeadRenderer = null;
+    [SerializeField] MeshRenderer tankCannonRenderer = null;
 
     float invincibleTimer;
-    Color initialColor;
-    Color invincibilityColor;
+    Material initialMaterial;
+    Material invincibilityMat;
 
     Coroutine invincibleCoroutine;
     PlayerStats playerStats;
@@ -21,7 +22,7 @@ public class TankCollisioner : MonoBehaviour
     private void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
-        initialColor = tankBodyRenderer.material.color;
+        initialMaterial = tankBodyRenderer.material;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -52,12 +53,12 @@ public class TankCollisioner : MonoBehaviour
         Destroy(item.gameObject);
     }
 
-    public void SetInvincibility(float invincibilityTime, Color invincibilityColor)
+    public void SetInvincibility(float invincibilityTime, Material invincibilityMat)
     {
         invincibleTimer += invincibilityTime;
         if (onBecomeInvincible != null) { onBecomeInvincible(invincibleTimer); }
 
-        this.invincibilityColor = invincibilityColor;
+        this.invincibilityMat = invincibilityMat;
 
         if (invincibleCoroutine == null) { invincibleCoroutine = StartCoroutine(Invincibility()); }
     }
@@ -78,8 +79,9 @@ public class TankCollisioner : MonoBehaviour
 
     private void SetRenderersColor()
     {
-        Color colorToUse = invincibleTimer > 0 ? invincibilityColor : initialColor;
-        tankBodyRenderer.material.color = colorToUse;
-        tankHeadRenderer.material.color = colorToUse;
+        Material materialToUse = invincibleTimer > 0 ? invincibilityMat : initialMaterial;
+        tankBodyRenderer.material = materialToUse;
+        tankHeadRenderer.material = materialToUse;
+        tankCannonRenderer.material = materialToUse;
     }
 }

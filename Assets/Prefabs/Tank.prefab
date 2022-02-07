@@ -10221,3 +10221,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankBodyRenderer: {fileID: 7094549743023290033}
   tankHeadRenderer: {fileID: 5946022924862889860}
+  tankCannonRenderer: {fileID: 4200194804886091858}

@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d821750106491489681c52607b35f0cb, type: 2}
+  - {fileID: 2100000, guid: c387f730aaacc4c529d84c7de80dd4ad, type: 2}
   - {fileID: 2100000, guid: 81dd7386a9331464aa416851a9e7e609, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemiesToDestroy: 10
+  destroyDecorator: {fileID: 0}
   thunderClip: {fileID: 8300000, guid: 3cb679f4374a1444fbaba133c02bba5e, type: 3}
 --- !u!1 &2819388452970075424
 GameObject:

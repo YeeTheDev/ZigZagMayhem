@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadsBeforeItem: 15
-  chanceToSpawnItem: 5
+  chanceToSpawnItem: 10
   items:
   - {fileID: 802347357484198716, guid: 93c80c1f9060147a8b49e16280208963, type: 3}
   - {fileID: 6365090755744837748, guid: fd14bb6691fc2490b837253e6df394fb, type: 3}
@@ -842,6 +842,7 @@ MonoBehaviour:
   - {fileID: 3449857215746825023, guid: 6d27149016ac84685a59fb4eee1f249c, type: 3}
   - {fileID: 2105602124375756252, guid: 8f69be09545e84074ae2d29e56772d58, type: 3}
   - {fileID: 2105602124375756252, guid: e3feaa36c10174baab4a952b6fee7aac, type: 3}
+  - {fileID: 574662490676528144, guid: b73932565089f40f8863c6781ffb2884, type: 3}
 --- !u!4 &354145665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4983026797405523375, guid: 9b030ff7556414ea4ae2678b13a24ba7, type: 3}

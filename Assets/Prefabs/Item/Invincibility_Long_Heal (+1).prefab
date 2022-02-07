@@ -4827,7 +4827,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 2100000, guid: f08e3c102929e45d88ef0abaedf09ac1, type: 2}
+  - {fileID: 2100000, guid: 81dd7386a9331464aa416851a9e7e609, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5208,7 +5208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityTime: 10
-  invincibilityColor: {r: 1, g: 0.6392157, b: 0, a: 1}
+  invincibilityMaterial: {fileID: 2100000, guid: dc707779cbb8f47029d6cb12e9d04a77, type: 2}
   invincibilityClip: {fileID: 8300000, guid: 0e7490a2db91d407689be41e506323d1, type: 3}
 --- !u!114 &7985620232647350101
 MonoBehaviour:

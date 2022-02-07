@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityTime: 10
-  invincibilityColor: {r: 1, g: 0.6396222, b: 0, a: 1}
+  invincibilityMaterial: {fileID: 2100000, guid: dc707779cbb8f47029d6cb12e9d04a77, type: 2}
   invincibilityClip: {fileID: 8300000, guid: 0e7490a2db91d407689be41e506323d1, type: 3}
 --- !u!114 &351804473
 MonoBehaviour:
